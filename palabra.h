@@ -15,10 +15,13 @@ class palabra{
         
     public:
         void obtener_palabra();
-        void visualizar_palabra();
+        void visualizar_rayas_palabra();
         void introducir_letra();
         void grabar_en_letras_introducidas(char letra);
-        void validar_palabra(char letra);
+        void comprobar_si_letra_fallada(char letra);
+        void visualizar_palabra();
+
+        
 
 
 };
