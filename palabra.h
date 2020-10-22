@@ -18,8 +18,9 @@ class palabra{
         void visualizar_rayas_palabra();
         void introducir_letra();
         void grabar_en_letras_introducidas(char letra);
-        void comprobar_si_letra_fallada(char letra);
+        bool comprobar_si_letra_fallada(char letra);
         void visualizar_palabra();
+        bool comprobar_palabra_acertada();
 
         
 

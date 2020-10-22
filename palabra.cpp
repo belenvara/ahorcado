@@ -56,14 +56,43 @@ void palabra::grabar_en_letras_introducidas(char letra)
    
 }
 
-void palabra::comprobar_si_letra_fallada(char letra)
+bool palabra::comprobar_si_letra_fallada(char letra)
 {
 
     if (palabra.find_first_of(letra) == -1)
     {
         mi_set_letras.letras_falladas = mi_set_letras.letras_falladas + letra;
-        //Actualizar mostrar letras falladas
+       
     }
+}
+
+bool palabra::comprobar_palabra_acertada(){
+     int cuentaletras=0;
+     int longitud_palabra;
+     longitud_palabra=palabra.length();
+     int i;
+
+for (i = 0; i < longitud_palabra; i++)
+    {
+        
+      if (mi_set_letras.letras_introducidas.find_first_of(palabra[i])!=-1)
+       {    
+            
+           
+           cuentaletras++;
+        }
+        
+
+    }
+
+    if(cuentaletras==longitud_palabra){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+
 }
 
 void palabra::visualizar_palabra()
@@ -80,9 +109,9 @@ void palabra::visualizar_palabra()
       if (mi_set_letras.letras_introducidas.find_first_of(palabra[i])!=-1)
        {    
             
-            //cout<<mi_set_letras.letras_introducidas<<endl;
-            //system("pause");
+           ;
             cout << palabra[i] << " ";
+           
         }
         else
         {

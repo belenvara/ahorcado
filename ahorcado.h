@@ -6,7 +6,9 @@ class ahorcado {
      int miembros;
      
    public:
-   bool
+   void mostrar_ahorcado();
+   int contabilizar_fallos();
+
 
 
 };

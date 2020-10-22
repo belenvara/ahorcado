@@ -10,11 +10,12 @@ int main()
     palabra mi_palabra;
     mi_palabra.obtener_palabra();
     mi_palabra.visualizar_rayas_palabra();
-    while (intentos<9){
+    while (intentos<19 && mi_palabra.comprobar_palabra_acertada()==false){
         mi_palabra.introducir_letra();
         intentos++;
     }
-
+cout<<"FIN JUEGO: HAS ACERTADO"<<endl;
+cout<<"Palabra secreta:";
     system ("pause");
 }
  
