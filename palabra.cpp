@@ -6,9 +6,13 @@
 #include <string>
 #include <string.h>
 #include "set_letras.h"
+#include "ahorcado.h"
 
 using namespace std;
 string p;
+
+palabra::palabra(ahorcado& a):mi_ahorcado(a){
+}
 
 void palabra::obtener_palabra()
 {
@@ -27,9 +31,9 @@ void palabra::obtener_palabra()
         datos >> p;
     }
 
-    cout << num << endl;
-    cout << p;
-    palabra = p;
+    //cout << num << endl;
+    //cout << p;
+    palabra1 = p;
 
     datos.close();
 }
@@ -40,7 +44,7 @@ void palabra::visualizar_rayas_palabra()
     int longitud;
     int cont;
 
-    longitud = palabra.length();
+    longitud = palabra1.length();
 
     for (cont = 0; cont < longitud; cont++)
     {
@@ -56,26 +60,27 @@ void palabra::grabar_en_letras_introducidas(char letra)
    
 }
 
-bool palabra::comprobar_si_letra_fallada(char letra)
+void palabra::comprobar_si_letra_fallada(char letra)
 {
 
-    if (palabra.find_first_of(letra) == -1)
+    if (palabra1.find_first_of(letra) == -1)
     {
         mi_set_letras.letras_falladas = mi_set_letras.letras_falladas + letra;
-       
+        mi_ahorcado.anhadir_fallos();
+         mi_ahorcado.mostrar_ahorcado();   
     }
 }
 
 bool palabra::comprobar_palabra_acertada(){
      int cuentaletras=0;
      int longitud_palabra;
-     longitud_palabra=palabra.length();
+     longitud_palabra=palabra1.length();
      int i;
 
 for (i = 0; i < longitud_palabra; i++)
     {
         
-      if (mi_set_letras.letras_introducidas.find_first_of(palabra[i])!=-1)
+      if (mi_set_letras.letras_introducidas.find_first_of(palabra1[i])!=-1)
        {    
             
            
@@ -99,18 +104,19 @@ void palabra::visualizar_palabra()
 {
     int i;
     int longitud_palabra;
-    longitud_palabra=palabra.length();
+    longitud_palabra=palabra1.length();
 
-    system("cls");
+    //system("cls");
+    cout<<endl;
 
     for (i = 0; i < longitud_palabra; i++)
     {
         
-      if (mi_set_letras.letras_introducidas.find_first_of(palabra[i])!=-1)
+      if (mi_set_letras.letras_introducidas.find_first_of(palabra1[i])!=-1)
        {    
             
            ;
-            cout << palabra[i] << " ";
+            cout << palabra1[i] << " ";
            
         }
         else
@@ -118,10 +124,18 @@ void palabra::visualizar_palabra()
             cout << "_ ";
         }
     }
-        cout<<endl;
-        cout << "Letras falladas: " << mi_set_letras.letras_falladas<<endl;
+        //cout<<endl;
+        //cout << "Letras falladas: " << mi_set_letras.letras_falladas<<endl;
+        
+       
+       }
+
+       void palabra::visualizar_letras_falladas(){
+        cout << "Letras falladas: " << mi_set_letras.letras_falladas;
 
 }
+
+
 
 void palabra::introducir_letra()
 {
@@ -133,6 +147,8 @@ void palabra::introducir_letra()
     while (letra_introducida == false)
     {
         letra_introducida = true;
+        cout<<endl;
+
         cout << "Introducir letra a jugar:" << endl;
         cin >> letra;
 
@@ -152,7 +168,7 @@ void palabra::introducir_letra()
     //cout << "Letras introducidas " << mi_set_letras.letras_introducidas << endl;
     //system("pause");
     comprobar_si_letra_fallada(letra);
-    cout << "Letras falladas: " << mi_set_letras.letras_falladas;
+    //cout << "Letras falladas: " << mi_set_letras.letras_falladas;
     //system("pause");
 
      visualizar_palabra();

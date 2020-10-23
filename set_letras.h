@@ -12,7 +12,6 @@ class set_letras{
         string letras_falladas;
 
     public:
-    void visualizar_letras_falladas();
 
 
 

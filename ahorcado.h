@@ -2,12 +2,14 @@
 # define _ahorcado
 
 class ahorcado {
-   protected:
+   public:
      int miembros;
      
    public:
    void mostrar_ahorcado();
-   int contabilizar_fallos();
+   void anhadir_fallos();
+   ahorcado();
+
 
 
 
