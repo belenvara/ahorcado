@@ -7,7 +7,8 @@
 
 void ahorcado::mostrar_ahorcado(){
        
-char vector_miembro[12,15] { "_""_""_"_"_""_""_""_"
+char vector_miembro[12,15] { "_,_,______´,
+                            ()
                             "|"       "|"
                             "|"      "xx" 
                             "|"     "xxxx"
